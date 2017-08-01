@@ -106,7 +106,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(mModel.getList().get(index).getWeather().get(0).getIcon() != null){
             Glide.with(this)
-                    .load(mModel.getList().get(index).getWeather().get(0).getIcon()+".png")
+                    .load("http://openweathermap.org/img/w/" + mModel.getList().get(index).getWeather().get(0).
+                            getIcon()+".png")
                     .asBitmap()
                     .fitCenter()
                     .centerCrop()
@@ -149,8 +150,9 @@ public class MainActivity extends AppCompatActivity {
 
                         mModel = model;
                         for (int i = 0; i < model.getList().size() && i < 5; i++) {
-                            fiveDayFiveDayModel = new FiveDayModel(days[i], model.getList().get(i).getMain().getTemp().toString(),
-                                    model.getList().get(i).getWeather().get(0).getIcon());
+                            fiveDayFiveDayModel = new FiveDayModel(days[i],
+                                    model.getList().get(i).getMain().getTemp().toString(),
+                                    mModel.getList().get(i).getWeather().get(0).getIcon());
                             fiveDayData.add(fiveDayFiveDayModel);
                         }
                         init5Day();

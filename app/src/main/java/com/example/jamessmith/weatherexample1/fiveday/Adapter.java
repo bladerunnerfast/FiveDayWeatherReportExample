@@ -40,12 +40,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.CustomViewHolder>{
         holder._day.setText(fiveDayModel.get(position).getDay());
         double degrees = f2c(Double.parseDouble(fiveDayModel.get(position).getTemp()));
 
-        Log.v(Adapter.class.getName(), fiveDayModel.get(position).getTemp());
+        Log.v(Adapter.class.getName(), "http://openweathermap.org/img/w/" +
+                fiveDayModel.get(position).getIcon() + ".png");
         holder._temp.setText(Math.floor(degrees) + " c");
 
         if(fiveDayModel.get(position).getIcon() != null){
             Glide.with(context)
-                    .load(fiveDayModel.get(position).getIcon()+".png")
+                    .load("http://openweathermap.org/img/w/" + fiveDayModel.get(position).getIcon() + ".png")
                     .asBitmap()
                     .fitCenter()
                     .centerCrop()
@@ -76,6 +77,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.CustomViewHolder>{
             _day = view.findViewById(R.id.tv_day);
             _temp = view.findViewById(R.id.tv_temp);
             _customView = view.findViewById(R.id.rl_segment);
+            _icon = view.findViewById(R.id.iv_icon_list);
+
             intent = new Intent();
 
             _customView.setOnClickListener(new View.OnClickListener() {

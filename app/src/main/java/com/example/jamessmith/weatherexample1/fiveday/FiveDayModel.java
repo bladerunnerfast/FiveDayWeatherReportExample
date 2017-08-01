@@ -11,6 +11,7 @@ public class FiveDayModel {
     public FiveDayModel(String day, String temp, String icon){
         this.day = day;
         this.temp = temp;
+        this.icon = icon;
     }
 
     public String getIcon() {
